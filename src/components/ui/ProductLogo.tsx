@@ -1,0 +1,13 @@
+import { Link } from "react-router";
+
+export function ProductLogo({ compact = false, to = "/" }: { compact?: boolean; to?: string }) {
+  return (
+    <Link className="product-logo" to={to} aria-label="Scenara — página inicial">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M6 8.5 15.8 3 26 8.8v5.4l-10.2 5.9L6 14.5v-6Z" />
+        <path d="m6 17.5 9.8 5.6L26 17.2v5.7l-10.2 5.8L6 23.1v-5.6Z" />
+      </svg>
+      {!compact && <span>scenara</span>}
+    </Link>
+  );
+}
