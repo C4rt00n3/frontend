@@ -1,0 +1,399 @@
+/* Complementos ao CSS do design (src/index.css): estados e componentes que o protótipo não cobria. */
+
+.product-shell :focus-visible,
+.auth-page :focus-visible {
+  outline: 2px solid #a477ff;
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 7px;
+  color: #fff;
+  background: #7138e8;
+  font-size: 13px;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+.product-sidebar nav button:disabled,
+.quick-actions > button:disabled,
+.compare-options button:disabled {
+  opacity: 0.45;
+}
+
+/* Carregamento, erro e esqueletos */
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50vh;
+  color: #8b8796;
+  font-size: 13px;
+}
+.boot-screen {
+  display: grid;
+  place-items: center;
+}
+.skeleton {
+  border: 1px solid #22202c;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #101018 0%, #171622 50%, #101018 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+.error-state > span {
+  color: #ef7a84;
+}
+.empty-state p {
+  max-width: 420px;
+  line-height: 1.5;
+}
+.empty-state-action {
+  margin-top: 18px;
+}
+
+/* Formulários */
+.field-error {
+  display: block;
+  margin-top: 6px;
+  color: #ef7a84;
+  font-size: 11.5px;
+}
+.auth-card .field-error {
+  margin-top: 6px;
+}
+.product-form input[aria-invalid="true"],
+.product-form textarea[aria-invalid="true"],
+.auth-card input[aria-invalid="true"] {
+  border-color: rgba(239, 68, 68, 0.55);
+}
+.auth-switch a {
+  color: #b48cff;
+  font-weight: 600;
+}
+.auth-switch a:hover {
+  color: #d3bcff;
+}
+.range-exact {
+  margin-top: 18px;
+}
+.scenario-form-grid > .form-error {
+  margin: 0;
+}
+
+/* Botões auxiliares */
+.product-primary.danger {
+  border-color: #dc4a55;
+  background: #c93a46;
+  box-shadow: 0 7px 25px rgba(201, 58, 70, 0.18);
+}
+.product-primary.danger:hover {
+  background: #d8434f;
+}
+.product-secondary.danger {
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #ef7a84;
+}
+.product-secondary.icon-only {
+  padding: 0 11px;
+}
+.product-secondary:disabled {
+  opacity: 0.6;
+}
+.danger-zone {
+  margin-top: 18px;
+  border-color: rgba(239, 68, 68, 0.18);
+}
+.danger-zone .form-section-title > span {
+  color: #ef7a84;
+}
+
+/* Diálogo de confirmação */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(5, 5, 10, 0.72);
+  backdrop-filter: blur(4px);
+}
+.dialog-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 91;
+  width: min(440px, calc(100% - 32px));
+  transform: translate(-50%, -50%);
+  padding: 24px;
+  border: 1px solid #2d2a3c;
+  border-radius: 12px;
+  color: #efedf5;
+  background: #11111c;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+}
+.dialog-title {
+  font-size: 17px;
+  font-weight: 600;
+}
+.dialog-description {
+  margin-top: 10px;
+  color: #9694a8;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.dialog-description strong {
+  color: #efedf5;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* Menu de opções */
+.menu-content {
+  z-index: 80;
+  min-width: 200px;
+  padding: 6px;
+  border: 1px solid #2d2a3c;
+  border-radius: 9px;
+  background: #14131e;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  border-radius: 6px;
+  color: #d6d2de;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+.menu-item[data-highlighted] {
+  background: #1f1d2c;
+}
+.menu-item.danger {
+  color: #ef7a84;
+}
+
+/* Gráficos e painéis */
+.chart-frame {
+  width: 100%;
+  margin-top: 12px;
+}
+.panel-note {
+  color: #6f6c7c;
+  font-size: 12px;
+}
+.compare-hint {
+  margin-top: 14px;
+}
+.result-metrics.secondary {
+  margin-top: 10px;
+}
+.result-metrics.secondary .result-metric strong {
+  font-size: 17px;
+}
+.results-graph {
+  margin-top: 13px;
+}
+.history-table button.active {
+  background: rgba(139, 92, 246, 0.06);
+}
+.history-table .mono {
+  font-family: var(--font-mono);
+}
+
+/* Premissas agrupadas no detalhe do cenário */
+.variable-group + .variable-group {
+  margin-top: 18px;
+}
+.variable-group h4 {
+  margin-bottom: 10px;
+  color: #8b8796;
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.variable-group:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Assistente do cenário: barra de etapas */
+.wizard {
+  margin: 4px 0 18px;
+}
+.wizard-progress {
+  height: 2px;
+  margin-bottom: 14px;
+  border-radius: 2px;
+  background: #22202e;
+  overflow: hidden;
+}
+.wizard-progress i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #7138e8, #a477ff);
+  transition: width 0.3s ease;
+}
+.wizard-steps {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.wizard-steps button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #6e6a79;
+  text-align: left;
+  transition: 0.2s ease;
+}
+.wizard-steps button:not(:disabled):hover {
+  color: #c1bdc9;
+  background: #13121c;
+}
+.wizard-steps button:disabled {
+  opacity: 0.5;
+}
+.wizard-index {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid #302d3d;
+  border-radius: 50%;
+  font: 500 11px var(--font-mono);
+}
+.wizard-label {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wizard-steps button.current {
+  border-color: #3a2a63;
+  color: #efedf5;
+  background: rgba(113, 56, 232, 0.1);
+}
+.wizard-steps button.current .wizard-index {
+  border-color: #8753ef;
+  color: #fff;
+  background: #7138e8;
+}
+.wizard-steps button.done .wizard-index {
+  border-color: rgba(79, 198, 122, 0.4);
+  color: #4fc67a;
+  background: rgba(79, 198, 122, 0.08);
+}
+
+/* Assistente do cenário: revisão */
+.wizard-review {
+  display: grid;
+  gap: 12px;
+}
+.review-block {
+  padding: 16px;
+  border: 1px solid #292735;
+  border-radius: 8px;
+  background: #0c0c14;
+}
+.review-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.review-head h4 {
+  color: #8b8796;
+  font: 500 11px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.review-head button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #a477ff;
+  font-size: 12px;
+}
+.review-head button:hover {
+  color: #d3bcff;
+}
+.review-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.review-description {
+  margin-top: 6px;
+  color: #8b8796;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.wizard-review dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  margin: 0;
+}
+.wizard-review dt {
+  color: #6f6c7c;
+  font-size: 12px;
+}
+.wizard-review dd {
+  margin: 3px 0 0;
+  font: 500 14px var(--font-mono);
+}
+.wizard-review dd small {
+  display: block;
+  margin-top: 2px;
+  color: #656271;
+  font: 11px Inter, ui-sans-serif, sans-serif;
+}
+
+@media (max-width: 1050px) {
+  .result-metrics.secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Em telas médias, só a etapa atual mostra o nome. */
+  .wizard-steps button:not(.current) .wizard-label {
+    display: none;
+  }
+  .wizard-steps {
+    grid-template-columns: repeat(7, auto);
+    justify-content: space-between;
+  }
+}
+@media (max-width: 560px) {
+  .wizard-review dl {
+    grid-template-columns: 1fr;
+  }
+}

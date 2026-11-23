@@ -127,17 +127,27 @@ frontend/
 
 | Rota | Descrição |
 |---|---|
+| `/` | Página inicial (landing) |
 | `/login` | Autenticação |
 | `/register` | Cadastro |
 | `/app/dashboard` | Dashboard |
+| `/app/settings` | Dados da conta |
 | `/app/projects` | Listagem de projetos |
 | `/app/projects/new` | Novo projeto |
-| `/app/projects/:projectId` | Detalhes do projeto |
+| `/app/projects/:projectId` | Detalhes do projeto (`?tab=history` mostra as simulações do projeto) |
+| `/app/projects/:projectId/edit` | Edição do projeto |
 | `/app/projects/:projectId/scenarios/new` | Novo cenário |
 | `/app/projects/:projectId/scenarios/:scenarioId` | Detalhes do cenário |
 | `/app/projects/:projectId/scenarios/:scenarioId/edit` | Edição do cenário |
-| `/app/projects/:projectId/scenarios/:scenarioId/simulations` | Histórico de simulações |
+| `/app/projects/:projectId/scenarios/:scenarioId/simulations` | Resultado da simulação mais recente |
+| `/app/projects/:projectId/scenarios/:scenarioId/simulations/:simulationId` | Resultado de uma simulação específica |
 | `/app/projects/:projectId/compare` | Comparação de cenários |
+
+Rotas em `/app` exigem sessão; sem token, o usuário vai para `/login` e volta para a página pedida após entrar. Uma resposta 401 da API encerra a sessão.
+
+### Premissas e unidades
+
+A API recebe taxas como fração (`0.032` = 3,2%) e prazos de capital de giro em dias. O formulário de cenário mostra taxas em porcentagem; a conversão fica em `utils/assumptions.ts`.
 
 ## Comunicação com o backend
 
@@ -219,6 +229,17 @@ http://localhost:5173
 ```bash
 npm run build
 ```
+
+### Outros scripts
+
+| Script | O que faz |
+|---|---|
+| `npm test` | Testes (Vitest + Testing Library), inclusive um teste de fumaça que renderiza todas as rotas com a API simulada |
+| `npm run typecheck` | Checagem de tipos |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier em `src/` |
+
+O backend precisa estar em execução (MongoDB e Redis incluídos, via `docker compose` na pasta `backend/`) e aceitar a origem do frontend em `CORS_ALLOWED_ORIGINS` (padrão: `http://localhost:5173`).
 
 ## Boas práticas
 
