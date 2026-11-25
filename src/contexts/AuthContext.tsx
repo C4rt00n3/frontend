@@ -23,6 +23,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(() => getAuthToken());
 
   const logout = useCallback(() => {
+    const currentToken = getAuthToken();
+    // Revoga a sessão no backend sem bloquear a saída: o estado local é limpo de qualquer forma.
+    if (currentToken) authService.logout(currentToken).catch(() => {});
     setAuthToken(null);
     setToken(null);
     queryClient.clear();
