@@ -77,6 +77,7 @@ const STATUS_MESSAGES: Record<number, string> = {
   403: "Você não tem permissão para esta ação.",
   404: "Não encontramos o que você procurava.",
   409: "Já existe um registro com esses dados.",
+  429: "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
   500: "O servidor encontrou um erro. Tente novamente em instantes.",
 };
 
